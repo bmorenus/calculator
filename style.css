@@ -1,0 +1,115 @@
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    background-color: white;
+    color: darkblue;
+    font-family: sans-serif;
+    height: 100px;
+}
+
+div#calculator{
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    height: 600px;
+    width: 400px;
+    border: 3px solid black;
+}
+
+div#screen{
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items: flex-end;
+    height: 25%;
+    width: 100%;
+    color: white;
+    border-bottom: 1px solid black;
+}
+
+div#screen #active-equation{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    font-size: 48px;
+    height: 75%;
+    width: 100%;   
+}
+
+div#screen #full-equation{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    font-size: 20px;
+    height: 25%;
+    width: 100%;   
+}
+
+div#button-container{
+    display: flex;
+    flex-direction: column;
+    height: 75%;
+    font-size: large;
+}
+
+div#button-container span{
+    display: flex;
+    justify-content: space-around;
+    height: 20%;
+}
+
+div#button-container span div{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 25%;
+    align-items: center;
+}
+
+div#button-container span div#double{
+    width: 50%;
+    /* padding used to center the double-wide "0" button" */
+    padding-right: 1px;
+}
+
+div.col-2,
+div.col-3,
+div.col-4{
+    border-left: 1px solid black;
+}
+
+span#row-2,
+span#row-3,
+span#row-4,
+span#row-5{
+    border-top: 1px solid black;
+}
+
+div.numbers{
+    background-color: #C4C9D5;
+}
+
+div.numbers:hover{
+    background-color: #D7DDEA;
+}
+
+div.menu{
+    background-color: #E5E5E5;
+}
+
+div.menu:hover{
+    background-color: #F4F4F4;
+}
+
+div.operators{
+    background-color: #FCA311;
+}
+
+div.operators:hover{
+    background-color: #FCCD80;
+}
