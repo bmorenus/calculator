@@ -21,41 +21,41 @@
 
         <div id="calculator">
             <div id="screen">
-                <span id="active-equation">test1</span>
-                <span id="full-equation">test2</span>
+                <span id="currentEquation"></span>
+                <span id="lastEquation"></span>
             </div>
             <div id="button-container">
                 <span id="row-1">
-                    <div class="menu col-1">AC</div>
-                    <div class="menu col-2">Backspace</div>
-                    <div class="menu col-3">+/−</div>
-                    <div class="operators col-4">÷</div>
+                    <div class="menu col-1" id="clear">AC</div>
+                    <div class="menu col-2" id="delete">Backspace</div>
+                    <div class="menu col-3" id="negate">(−)</div>
+                    <div class="operator col-4" id="divide">÷</div>
                 </span>
                 <span id="row-2">
-                    <div class="numbers col-1">7</div>
-                    <div class="numbers col-2">8</div>
-                    <div class="numbers col-3">9</div>
-                    <div class="operators col-4">×</div>
+                    <div class="col-1" id="seven">7</div>
+                    <div class="col-2" id="eight">8</div>
+                    <div class="col-3" id="nine">9</div>
+                    <div class="operator col-4" id="multiply">×</div>
 
                 </span>
                 <span id="row-3">
-                    <div class="numbers col-1">4</div>
-                    <div class="numbers col-2">5</div>
-                    <div class="numbers col-3">6</div>
-                    <div class="operators col-4">−</div>
+                    <div class="col-1" id="four">4</div>
+                    <div class="col-2" id="five">5</div>
+                    <div class="col-3" id="six">6</div>
+                    <div class="operator col-4" id="subtract">-</div>
 
                 </span>
                 <span id="row-4">
-                    <div class="numbers col-1">1</div>
-                    <div class="numbers col-2">2</div>
-                    <div class="numbers col-3">3</div>
-                    <div class="operators col-4">+</div>
+                    <div class="col-1" id="one">1</div>
+                    <div class="col-2" id="two">2</div>
+                    <div class="col-3" id="three">3</div>
+                    <div class="operator col-4" id="add">+</div>
 
                 </span>
                 <span id="row-5">
-                    <div class="numbers" id="double">0</div>
-                    <div class="numbers col-3">.</div>
-                    <div class="operators col-4">=</div>
+                    <div class="col-1 col-2" id="zero">0</div>
+                    <div class="col-3" id="decimal">.</div>
+                    <div class="operator col-4" id="equals">=</div>
                 </span>
             </div>
         </div>

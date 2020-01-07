@@ -32,7 +32,7 @@ div#screen{
     border-bottom: 1px solid black;
 }
 
-div#screen #active-equation{
+div#screen #currentEquation{
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
@@ -41,7 +41,7 @@ div#screen #active-equation{
     width: 100%;   
 }
 
-div#screen #full-equation{
+div#screen #lastEquation{
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
@@ -71,7 +71,7 @@ div#button-container span div{
     align-items: center;
 }
 
-div#button-container span div#double{
+div#button-container span div#zero{
     width: 50%;
     /* padding used to center the double-wide "0" button" */
     padding-right: 1px;
@@ -90,12 +90,24 @@ span#row-5{
     border-top: 1px solid black;
 }
 
-div.numbers{
+div.col-1,
+div.col-2,
+div.col-3{
     background-color: #C4C9D5;
 }
 
-div.numbers:hover{
+div.col-1:hover,
+div.col-2:hover,
+div.col-3:hover{
     background-color: #D7DDEA;
+}
+
+div.col-4{
+    background-color: #FCA311;
+}
+
+div.col-4:hover{
+    background-color: #FCCD80;
 }
 
 div.menu{
@@ -104,12 +116,4 @@ div.menu{
 
 div.menu:hover{
     background-color: #F4F4F4;
-}
-
-div.operators{
-    background-color: #FCA311;
-}
-
-div.operators:hover{
-    background-color: #FCCD80;
 }
