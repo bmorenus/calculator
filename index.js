@@ -1,9 +1,10 @@
 let screen = {
+    currentEquation: document.getElementById("currentEquation"),
     lastEquation: document.getElementById("lastEquation"),
 
     displayEquation: function(input) {
         /* consider reducing font size if current equation overruns main line */
-        document.getElementById("currentEquation").textContent += input;
+        this.currentEquation.textContent = input.substring(0,10);
     }
 }
 
@@ -34,9 +35,28 @@ let keypad = {
 
     onClick: function(event){
         /* if = is clicked, call calculator.parse(equation) */
-        /* for remainder of inputs, call display equation w/ their ID to use in switch */
-
-        screen.displayEquation(event.target.textContent);
+        /* for remainder of IDs, call display equation with appropriate input */
+        switch (event.target.id) {
+            case "clear":
+                screen.displayEquation("");
+                break;
+            case "delete":
+                screen.displayEquation(screen.currentEquation.textContent.slice(0, -1));
+                break;
+            case "negate":
+                if (screen.currentEquation.textContent.substr(0,1) === "-") {
+                    screen.displayEquation(screen.currentEquation.textContent.slice(1));
+                } else {
+                    screen.displayEquation("-" + screen.currentEquation.textContent);
+                }
+                break;
+            case "equals":
+                calculator.parse(screen.currentEquation.textContent);
+                break;
+            default:
+                screen.displayEquation(screen.currentEquation.textContent + event.target.textContent);
+                break;       
+        }
     }
 }
 
@@ -58,16 +78,18 @@ let calculator = {
         return num1 / num2;
     },
     
-    operate: function(operator, num1, num2) {
-        switch (operator) {
+    operate: function(match, p1, p2, p3) {
+        p1 = parseInt(p1);
+        p3 = parseInt(p3);
+        switch (p2) {
             case "+":
-                return add(num1, num2);
+                return calculator.add(p1, p3);
             case "-":
-                return subtract(num1, num2);
-            case "*":
-                return multiply(num1, num2);
-            case "/":
-                return divide(num1, num2);
+                return calculator.subtract(p1, p3);
+            case "×":
+                return calculator.multiply(p1, p3);
+            case "÷":
+                return calculator.divide(p1, p3);
             default:
                 console.log("Not a valid operator.");
         }
@@ -77,7 +99,29 @@ let calculator = {
         /* while (equation.contains(class=operator) {
             Run regular expression searching for all operators and calculate them in order of precedence. 
             Also parse for (-) signs and ensure they are packaged with num1/num2 When calling this.operate(). */
-        
+        let temp = equation;
+        const multiplyDivide = /(-?\d+)([×÷])(-?\d+)/
+        const addSubtract = /(-?\d+)([+-])(-?\d+)/
+        /*const error = /(\D)(-?\d*?)(\D?)/*/
+
+        while (multiplyDivide.test(temp) === true) {
+            console.log(`multiplication or division detected in: ${temp}`);
+            temp = temp.replace(multiplyDivide, this.operate);
+            console.log(`all multiplication and division operations are resolved in: ${temp}`);
+        }
+
+        while (addSubtract.test(temp) === true) {
+            console.log(`addition or subtraction detected in: ${temp}`);
+            temp = temp.replace(addSubtract, this.operate);
+            console.log(`all addition and subtraction operations are resolved in: ${temp}`);
+        }
+
+        /*while (error.test(temp) === true) {
+            console.log(`error detected in: ${temp}`);
+            temp = temp.replace(error, 'error');
+            console.log('error message displayed');
+        }*/
+        screen.displayEquation(temp);
     }
 }
 
